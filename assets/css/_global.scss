@@ -1,0 +1,177 @@
+@import 'mixin';
+
+html {
+    font-size: 1rem;
+}
+body {
+    font-family: 'Poppins', sans-serif;
+}
+.font-small {
+    font-size: $font-small;
+}
+.font-extra-small {
+    font-size: $font-extra-small;
+}
+.font-black {
+    font-weight: $font-black;
+}
+.theme-heading, h1, h2, h3, h4, h5, h6 {
+    font-family: 'Changa One', cursive;
+}
+/*-- background color css --*/
+.theme-bg-primary {
+    background-color: $theme-primary-color;
+}
+.theme-bg-secondary {
+    background-color: $theme-secondary-color;
+}
+.theme-bg-accent-one {
+    background-color: $theme-accent-one;
+}
+.theme-bg-accent-two {
+    background-color: $theme-accent-two;
+}
+/*-- text css --*/
+.theme-text-white {
+    color: $theme-color-white;
+}
+.theme-text-primary {
+    color: $theme-primary-color;
+}
+.theme-text-secondary {
+    color: $theme-secondary-color;
+}
+.theme-text-accent-one  {
+    color: $theme-accent-one;
+}
+.theme-text-accent-two  {
+    color: $theme-accent-two;
+}
+/*-- shadow css --*/
+.theme-box-shadow {
+    @include theme-shadow
+}
+.theme-text-shadow {
+    text-shadow: $theme-text-shadow;
+}
+/*-- custom button css*/
+.custom-btn-primary {
+    @include custom-btn-primary;
+}
+.custom-btn-secondary {
+    @include custom-btn-secondary;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+}
+.custom-link {
+    @include custom-link;
+}
+/*-- primary button effect css --*/
+.custom-button {
+    .button-effect {
+        transition: .3s ease all;
+        position: relative;
+        z-index: 2;
+        overflow: hidden;
+        &::before {
+            transition: .5s all ease;
+            position: absolute;
+            top: 0;
+            left: 50%;
+            right: 50%;
+            bottom: 0;
+            opacity: 0;
+            content: '';
+            background-color: $theme-secondary-color;
+            z-index: -1;
+        }
+        &:hover, &:focus {
+            color: $theme-color-white;
+            &::before, &::after {
+                transition: 0.5s all ease;
+                left: 0;
+                right: 0;
+                opacity: 1;    
+            }
+        }
+    }
+}
+/*-- secondary button css --*/
+.icon-wrapper {
+    box-shadow: 0 0 0px 0px rgba($theme-secondary-color, 0.5);
+    cursor: pointer;
+    border-radius: 50%;
+    transition: 250ms color;
+    animation-name: wave;
+    animation-duration: 1s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    @keyframes wave {
+        0% {
+            box-shadow: 0 0 0px 0px rgba($theme-primary-color, 0.5);
+        }
+        100% {
+            box-shadow: 0 0 0px 15px rgba($theme-primary-color, 0);
+        }
+    }
+}
+/*-- highlight para css --*/
+.para-highlight {
+    position: relative;
+    color: $theme-accent-one;
+    font-weight: 600;
+    &::before {
+        @include highlight;
+        top: -10px;
+        left: 0px;
+    }
+}
+.highlight-text {
+    position: relative;
+    &::after {
+        @include highlight;
+        top: -10px;
+        left:45%;
+    }
+}
+/*-- image hover effect --*/
+.img-effect {
+    img {
+        transition: all 0.4s ease-in-out;
+    }
+    &:hover {
+        img {
+            transform: scale(1.5);
+        }
+    }
+}
+/*-- flood effect --*/
+.flood-effect {
+    transition: 0.25s ease-in-out;
+    overflow: hidden;
+    display: block;
+    text-align: center;
+    &:hover {
+      box-shadow: inset 10rem 0 0 0 $theme-secondary-color;
+      &:hover {
+          a {
+              color:$theme-color-white;
+          }
+      }
+    }
+}
+/* pulseBig */ 
+@keyframes pulseBig {
+    0% {
+        box-shadow: 0 0 0 0 #81ba71;
+    }
+
+    50% {
+        box-shadow: 0 0 0 20px rgba(1, 93, 199, 0);
+    }
+
+    100% {
+        box-shadow: 0 0 0 0 rgba(1, 93, 199, 0);
+    }
+}
